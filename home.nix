@@ -5,7 +5,7 @@ let
 in
 {
   imports =
-    myLib.collectFiles ./home
+    [ ./packages.nix ]
     ++ myLib.collectFiles ./programs
     ++ myLib.collectFiles ./services;
 

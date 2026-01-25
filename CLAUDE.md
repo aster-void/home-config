@@ -1,5 +1,17 @@
 # Home Manager Flake Notes
 
+## Directory layout
+
+```
+.
+├── flake.nix        # Flake entrypoint
+├── home.nix         # Home Manager config root
+├── packages.nix     # home.packages list
+├── lib/             # Helper functions (collectFiles)
+├── programs/        # Program modules (auto-imported)
+└── services/        # Service modules (auto-imported)
+```
+
 ## Commands
 
 - **switch**: `git add -A -N && home-manager switch`
@@ -8,7 +20,7 @@
 
 - Working directory is already this repo - no need for `git -C`
 - New `.nix` files must be `git add`ed before `home-manager switch` - flakes only see git-tracked files
-- Files in `programs/`, `home/`, and `services/` are auto-imported via `myLib.collectFiles`
+- Files in `programs/` and `services/` are auto-imported via `myLib.collectFiles`
 
 ## Adding packages
 
