@@ -1,6 +1,4 @@
-{ lib, ... }:
-
-{
+{lib, ...}: {
   services.hazkey.enable = true;
 
   i18n.inputMethod = {

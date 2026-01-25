@@ -1,11 +1,12 @@
-{ config, pkgs, ... }:
-
-let
-  myLib = import ./lib;
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  myLib = import ./lib;
+in {
   imports =
-    [ ./packages.nix ]
+    [./packages.nix]
     ++ myLib.collectFiles ./programs
     ++ myLib.collectFiles ./services;
 

@@ -11,7 +11,7 @@
         color-modes = true;
         bufferline = "multiple";
         true-color = true;
-        rulers = [ 80 120 ];
+        rulers = [80 120];
         idle-timeout = 50;
 
         cursor-shape = {
@@ -26,8 +26,8 @@
         };
 
         statusline = {
-          left = [ "mode" "spinner" "file-name" "file-modification-indicator" ];
-          right = [ "diagnostics" "selections" "position" "file-encoding" "file-type" ];
+          left = ["mode" "spinner" "file-name" "file-modification-indicator"];
+          right = ["diagnostics" "selections" "position" "file-encoding" "file-type"];
         };
 
         lsp = {
@@ -53,11 +53,11 @@
           };
           C-s = ":write";
           C-q = ":quit";
-          esc = [ "collapse_selection" "keep_primary_selection" ];
+          esc = ["collapse_selection" "keep_primary_selection"];
         };
 
         insert = {
-          C-s = [ "normal_mode" ":write" ];
+          C-s = ["normal_mode" ":write"];
         };
       };
     };

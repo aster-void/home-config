@@ -2,7 +2,6 @@
   programs.zellij = {
     enable = true;
 
-
     settings = {
       theme = "catppuccin-mocha";
       default_shell = "fish";
@@ -26,7 +25,7 @@
       };
 
       keybinds = {
-        unbind = [ "Ctrl g" ];
+        unbind = ["Ctrl g"];
       };
     };
   };

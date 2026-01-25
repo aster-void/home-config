@@ -17,22 +17,24 @@
     };
   };
 
-  outputs =
-    { nixpkgs, home-manager, nix-hazkey, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      homeConfigurations."aster" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+  outputs = {
+    nixpkgs,
+    home-manager,
+    nix-hazkey,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    homeConfigurations."aster" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
 
-        modules = [
-          nix-hazkey.homeModules.hazkey
-          ./home.nix
-        ];
+      modules = [
+        nix-hazkey.homeModules.hazkey
+        ./home.nix
+      ];
 
-        extraSpecialArgs = { inherit inputs; };
-      };
+      extraSpecialArgs = {inherit inputs;};
     };
+  };
 }
