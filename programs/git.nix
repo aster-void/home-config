@@ -24,7 +24,7 @@
       push.autoSetupRemote = true;
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
-      ghq.root = "~/workspace";
+      ghq.root = "~/Workspace";
     };
   };
 }
