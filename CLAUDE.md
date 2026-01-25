@@ -14,7 +14,7 @@
 
 ## Commands
 
-- **switch**: `git add -A -N && home-manager switch`
+- **switch**: `git add -A -N && home-manager switch --flake .`
 
 ## Working with this flake
 

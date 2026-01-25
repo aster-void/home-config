@@ -12,6 +12,14 @@ in
   home.username = "aster";
   home.homeDirectory = "/home/aster";
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "$HOME/.nix-profile/bin"
+    "/usr/local/bin"
+    "/usr/bin"
+    "/bin"
+  ];
+
   # You should not change this value, even if you update Home Manager.
   home.stateVersion = "25.11";
 
