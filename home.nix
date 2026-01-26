@@ -27,6 +27,9 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Enable XDG integration for non-NixOS Linux
+  targets.genericLinux.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
   news.display = "silent";
