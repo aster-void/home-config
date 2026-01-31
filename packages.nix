@@ -12,6 +12,7 @@ in {
     mcp-nixos
     lefthook
     alejandra
+    pandoc
     inputs.claude-desktop.packages.${system}.claude-desktop
   ];
 }
