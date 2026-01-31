@@ -3,6 +3,8 @@
     enable = true;
 
     settings = {
+      show_startup_tips = false;
+
       theme = "catppuccin-mocha";
       default_shell = "fish";
 
