@@ -1,6 +1,8 @@
 {
   config,
   pkgs,
+  lib,
+  inputs,
   ...
 }: let
   myLib = import ./lib;
@@ -33,4 +35,12 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   news.display = "silent";
+
+  home.sessionVariables = {
+    NIX_PATH = "nixpkgs=${inputs.nixpkgs}";
+  };
+
+  systemd.user.sessionVariables = {
+    NIX_PATH = lib.mkForce "nixpkgs=${inputs.nixpkgs}";
+  };
 }
