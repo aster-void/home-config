@@ -1,10 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
-  system = pkgs.stdenv.hostPlatform.system;
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     ripgrep
     bat
@@ -13,6 +7,5 @@ in {
     lefthook
     alejandra
     pandoc
-    inputs.claude-desktop.packages.${system}.claude-desktop
   ];
 }
