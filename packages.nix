@@ -3,6 +3,7 @@
     # Core utils
     ripgrep
     bat
+    lsof
 
     # Development
     ghq
@@ -15,5 +16,7 @@
 
     # Desktop
     blueberry
+    wl-clipboard
+    fastfetch
   ];
 }
