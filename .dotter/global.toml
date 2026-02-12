@@ -1,0 +1,22 @@
+[helpers]
+
+[default]
+depends = []
+
+[default.files]
+"CLAUDE.md" = ""
+"flake.lock" = ""
+"flake.nix" = ""
+"home.nix" = ""
+"lefthook.yml" = ""
+lib = ""
+"packages.nix" = ""
+programs = ""
+scripts = ""
+"scripts.nix" = ""
+services = ""
+
+[default.variables]
+
+[settings]
+default_target_type = "automatic"

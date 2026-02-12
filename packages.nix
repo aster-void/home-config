@@ -4,6 +4,7 @@
     ripgrep
     bat
     lsof
+    dotter
 
     # Development
     ghq
