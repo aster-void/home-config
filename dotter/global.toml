@@ -10,6 +10,7 @@ home-manager = ""
 "scripts" = "~/.local/bin/switch.sh"
 "dotter/ssh" = "~/.ssh"
 "dotter/config" = "~/.config"
+"dotter/local" = "~/.local"
 
 [default.variables]
 
