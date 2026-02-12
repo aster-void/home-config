@@ -8,7 +8,7 @@
   myLib = import ./lib;
 in {
   imports =
-    [./packages.nix]
+    [./packages.nix ./scripts.nix]
     ++ myLib.collectFiles ./programs
     ++ myLib.collectFiles ./services;
 
