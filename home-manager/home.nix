@@ -42,4 +42,11 @@ in {
   systemd.user.sessionVariables = {
     NIX_PATH = lib.mkForce "nixpkgs=${inputs.nixpkgs}";
   };
+
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      confirm-close-surface = false;
+    };
+  };
 }

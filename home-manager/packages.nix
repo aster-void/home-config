@@ -22,7 +22,6 @@
 
     # Programs (managed via dotter configs)
     fish
-    ghostty
     git
     helix
     lazygit
