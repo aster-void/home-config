@@ -1,10 +1,11 @@
 palette = "catppuccin_macchiato"
 format = """
 [░▒▓](crust)\
-$os\
-[](bg:lavender fg:crust)\
 $directory\
-[ ](fg:lavender bg:surface0)\
+[](bg:lavender fg:crust)\
+$os\
+$hostname\
+[](bg:surface0 fg:lavender)\
 $git_branch\
 $git_status\
 $hg_branch\
@@ -31,10 +32,11 @@ symbol = "·"
 style = "surface2"
 
 [directory]
-style = "fg:surface0 bg:lavender"
+style = "fg:lavender bg:crust"
 format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
+truncation_length = 0
+truncate_to_repo = false
+fish_style_pwd_dir_length = 0
 
 [directory.substitutions]
 "~" = "  "
@@ -115,24 +117,30 @@ threshold = 5
 discharging_symbol = ''
 style = 'bold fg:red bg:crust'
 
+[hostname]
+ssh_only = false
+style = 'fg:crust bg:lavender'
+format = '[$hostname ]($style)'
+disabled = false
+
 [os]
 format = '[ $symbol]($style)'
-style = 'fg:lavender bg:crust'
+style = 'fg:crust bg:lavender'
 disabled = false
 
 [os.symbols]
-Arch = " "
-Debian = " "
-Fedora = " "
-FreeBSD = " "
-Linux = " "
-Macos = " "
+Arch = " "
+Debian = " "
+Fedora = " "
+FreeBSD = " "
+Linux = " "
+Macos = " "
 NixOS = "󱄅 "
-Nobara = " "
-Pop = " "
-Raspbian = " "
-Ubuntu = " "
-Unknown = " "
+Nobara = " "
+Pop = " "
+Raspbian = " "
+Ubuntu = " "
+Unknown = " "
 
 # palette tables should be last in the config ⚓️
 [palettes.catppuccin_macchiato]
