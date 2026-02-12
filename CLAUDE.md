@@ -8,23 +8,25 @@
 ├── home.nix         # Home Manager config root
 ├── packages.nix     # home.packages list
 ├── lib/             # Helper functions (collectFiles)
-├── dotter/default/  # Program configs (deployed via dotter to ~/.config)
-├── scripts/         # Shell scripts (install.sh, update.sh)
-├── .dotter/         # Dotter config (global.toml)
+├── dotter/          # Dotter config + program configs
+│   ├── global.toml  # File mappings (committed)
+│   ├── local.toml   # Machine-specific package selection (gitignored)
+│   └── default/     # Config files deployed to ~/.config
+├── scripts/         # Shell scripts (install.sh, switch.sh, upgrade.sh)
 └── services/        # Service modules (auto-imported via collectFiles)
 ```
 
 ## Commands
 
-- **switch**: `git add -A -N && home-manager switch --flake .`
-- **deploy configs**: `dotter deploy -f -y`
-- **install (fresh machine)**: `./scripts/install.sh`
+- **switch**: `switch.sh` — apply nix and config changes
+- **upgrade**: `upgrade.sh` — full system upgrade (dnf, flake, flatpak, firmware)
+- **install**: `./scripts/install.sh` — fresh machine setup
 
 ## Architecture
 
 - **Home Manager** handles package installation, session variables, and services
 - **Dotter** handles config file deployment (symlinks from `dotter/default/` to `~/.config/`)
-- Program configs live in `dotter/default/` — adding/editing files there and running `dotter deploy` is all that's needed
+- Program configs live in `dotter/default/` — adding/editing files there and running `switch.sh` is all that's needed
 
 ## Working with this flake
 

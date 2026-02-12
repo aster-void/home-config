@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-FLAKE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$(dirname "$0")/.."
 
 echo "=== Installing Home Manager ==="
-nix run home-manager/master -- switch --flake "$FLAKE_DIR"
+nix run home-manager/master -- switch --flake .
 
 export PATH="$HOME/.nix-profile/bin:$PATH"
 
 echo ""
 echo "=== Deploying dotfiles ==="
-dotter deploy -f -y
+dotter -g dotter/global.toml -l dotter/local.toml deploy -f -y
 
 echo ""
 echo "=== Installation complete ==="

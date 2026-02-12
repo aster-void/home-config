@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-FLAKE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+SCRIPT_DIR="$(dirname "$0")"
 
 echo "=== Updating DNF ==="
 sudo dnf upgrade --refresh -y
 
 echo ""
 echo "=== Updating Home Manager Flake ==="
-cd "$FLAKE_DIR"
+cd "$SCRIPT_DIR/.."
 nix flake update
-git add -A -N
-home-manager switch --flake .
+"$SCRIPT_DIR/switch.sh"
 
 echo ""
 echo "=== Updating Flatpak ==="
