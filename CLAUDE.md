@@ -5,12 +5,15 @@
 ```
 .
 ├── home-manager/        # Home Manager flake
-│   ├── flake.nix        # Flake entrypoint
+│   ├── flake.nix        # Flake entrypoint (per-host module selection)
 │   ├── flake.lock
-│   ├── home.nix         # Home Manager config root
-│   ├── packages.nix     # home.packages list
-│   ├── scripts.nix      # Script symlinks to ~/.local/bin
-│   └── services/        # Service modules (auto-imported via collectFiles)
+│   ├── home.nix         # Shared base config (username, paths, session vars)
+│   └── modules/         # Individual modules imported per host
+│       ├── packages.nix          # Common packages
+│       ├── packages-desktop.nix  # Desktop-only packages
+│       ├── syncthing.nix         # Syncthing service
+│       ├── i18n.nix              # fcitx5 + hazkey
+│       └── ghostty.nix           # Ghostty terminal
 ├── dotter/              # Dotter config + program configs
 │   ├── global.toml      # File mappings (committed)
 │   ├── local.toml       # Machine-specific package selection (gitignored)
@@ -35,10 +38,12 @@
 
 - Working directory is already this repo - no need for `git -C`
 - New `.nix` files must be `git add`ed before `home-manager switch` - flakes only see git-tracked files
-- Files in `home-manager/services/` are auto-imported via `collectFiles`
+- Each host profile in `flake.nix` explicitly imports its modules — add/remove modules there per host
 
 ## Adding programs
 
-- **Packages/programs** → add to `home-manager/packages.nix` (installed via Home Manager)
+- **Common packages** → add to `home-manager/modules/packages.nix`
+- **Desktop-only packages** → add to `home-manager/modules/packages-desktop.nix`
+- **New module** → create in `home-manager/modules/`, then import it in the relevant hosts in `flake.nix`
 - **Config files** → add to `dotter/config/` (deployed to `~/.config/` via Dotter)
 - Don't assume packages exist in nixpkgs - search first, especially for proprietary/Linux-unsupported software that may require community flakes
