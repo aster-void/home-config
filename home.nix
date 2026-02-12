@@ -9,7 +9,6 @@
 in {
   imports =
     [./packages.nix ./scripts.nix]
-    ++ myLib.collectFiles ./programs
     ++ myLib.collectFiles ./services;
 
   home.username = "aster";

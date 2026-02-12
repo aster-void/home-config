@@ -19,5 +19,19 @@
     blueberry
     wl-clipboard
     fastfetch
+
+    # Programs (managed via dotter configs)
+    fish
+    ghostty
+    git
+    helix
+    lazygit
+    fzf
+    direnv
+    nix-direnv
+    mise
+    starship
+    zoxide
+    zellij
   ];
 }

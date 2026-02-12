@@ -1,0 +1,9 @@
+[[language]]
+auto-format = true
+name = "nix"
+
+[language.formatter]
+command = "nixfmt"
+
+[language-server.nil]
+command = "nil"

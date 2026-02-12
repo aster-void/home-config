@@ -11,10 +11,10 @@ depends = []
 "lefthook.yml" = ""
 lib = ""
 "packages.nix" = ""
-programs = ""
 scripts = ""
 "scripts.nix" = ""
 services = ""
+"dotter/default" = "~/.config"
 
 [default.variables]
 
