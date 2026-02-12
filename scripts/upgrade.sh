@@ -12,6 +12,10 @@ nix flake update --flake ./home-manager
 switch.sh
 
 echo ""
+echo "=== Updating GPU Drivers ==="
+sudo non-nixos-gpu-setup
+
+echo ""
 echo "=== Updating Flatpak ==="
 flatpak update -y
 
