@@ -7,10 +7,8 @@ depends = []
 "CLAUDE.md" = ""
 "lefthook.yml" = ""
 home-manager = ""
-"scripts/switch.sh" = "~/.local/bin/switch.sh"
-"scripts/upgrade.sh" = "~/.local/bin/upgrade.sh"
-"scripts/install.sh" = "~/.local/bin/install.sh"
-"scripts/undeploy.sh" = "~/.local/bin/undeploy.sh"
+"scripts" = "~/.local/bin/switch.sh"
+"dotter/ssh" = "~/.ssh"
 "dotter/config" = "~/.config"
 
 [default.variables]
