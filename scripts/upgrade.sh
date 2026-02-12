@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd ~/Workspace/github.com/aster-void/home-config
+cd "$(dirname "$(readlink -f "$0")")/.."
 
 echo "=== Updating DNF ==="
 sudo dnf upgrade --refresh -y

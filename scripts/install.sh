@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd ~/Workspace/github.com/aster-void/home-config
+cd "$(dirname "$(readlink -f "$0")")/.."
 
 echo "=== Installing Home Manager ==="
 nix run home-manager/master -- switch --flake ./home-manager
