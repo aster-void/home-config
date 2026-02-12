@@ -5,11 +5,14 @@
   inputs,
   ...
 }: let
-  myLib = import ./lib;
+  collectFiles = dir:
+    map (name: dir + "/${name}")
+    (builtins.filter (name: builtins.match ".*\\.nix" name != null)
+      (builtins.attrNames (builtins.readDir dir)));
 in {
   imports =
     [./packages.nix ./scripts.nix]
-    ++ myLib.collectFiles ./services;
+    ++ collectFiles ./services;
 
   home.username = "aster";
   home.homeDirectory = "/home/aster";

@@ -10,7 +10,18 @@
     ghq
     lefthook
     mcp-nixos
-    alejandra
+
+    # LSP & Formatters
+    nil
+    nixfmt
+    typescript-language-server
+    typescript
+    vscode-langservers-extracted
+    tailwindcss-language-server
+    marksman
+    taplo
+    bash-language-server
+    prettier
 
     # Documents
     pandoc

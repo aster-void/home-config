@@ -8,7 +8,7 @@ depends = []
 "lefthook.yml" = ""
 home-manager = ""
 scripts = ""
-"dotter/default" = "~/.config"
+"dotter/config" = "~/.config"
 
 [default.variables]
 
