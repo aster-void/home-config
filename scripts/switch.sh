@@ -5,4 +5,4 @@ cd ~/Workspace/github.com/aster-void/home-config
 
 git add -A -N
 home-manager switch --flake ./home-manager
-dotter -g dotter/global.toml -l dotter/local.toml deploy -f -y
+dotter -g dotter/global.toml -l dotter/local.toml --cache-file dotter/.cache.toml deploy -f -y

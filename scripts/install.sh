@@ -10,7 +10,7 @@ export PATH="$HOME/.nix-profile/bin:$PATH"
 
 echo ""
 echo "=== Deploying dotfiles ==="
-dotter -g dotter/global.toml -l dotter/local.toml deploy -f -y
+dotter -g dotter/global.toml -l dotter/local.toml --cache-file dotter/.cache.toml deploy -f -y
 
 echo ""
 echo "=== Installing Flatpak apps ==="
