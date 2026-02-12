@@ -5,15 +5,9 @@ depends = []
 
 [default.files]
 "CLAUDE.md" = ""
-"flake.lock" = ""
-"flake.nix" = ""
-"home.nix" = ""
 "lefthook.yml" = ""
-lib = ""
-"packages.nix" = ""
+home-manager = ""
 scripts = ""
-"scripts.nix" = ""
-services = ""
 "dotter/default" = "~/.config"
 
 [default.variables]

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd "$(dirname "$0")/.."
+cd ~/Workspace/github.com/aster-void/home-config
 
 echo "=== Installing Home Manager ==="
-nix run home-manager/master -- switch --flake .
+nix run home-manager/master -- switch --flake ./home-manager
 
 export PATH="$HOME/.nix-profile/bin:$PATH"
 
