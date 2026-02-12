@@ -9,6 +9,7 @@ mouse_mode true
 pane_frames true
 scroll_buffer_size 10000
 scrollback_editor "hx"
+session_serialization false
 show_startup_tips false
 simplified_ui false
 theme "catppuccin-mocha"
