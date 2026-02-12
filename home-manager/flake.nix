@@ -11,6 +11,8 @@
       url = "github:aster-void/nix-hazkey";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
+
   };
 
   outputs =
@@ -18,6 +20,7 @@
       nixpkgs,
       home-manager,
       nix-hazkey,
+      nix-flatpak,
       ...
     }@inputs:
     let
