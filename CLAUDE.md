@@ -15,13 +15,14 @@
 │   ├── global.toml      # File mappings (committed)
 │   ├── local.toml       # Machine-specific package selection (gitignored)
 │   └── config/          # Config files deployed to ~/.config
-└── scripts/             # Shell scripts (install.sh, switch.sh, upgrade.sh)
+└── scripts/             # Shell scripts (install.sh, switch.sh, undeploy.sh, upgrade.sh)
 ```
 
 ## Commands
 
 - **switch**: `switch.sh` — apply nix and config changes
 - **upgrade**: `upgrade.sh` — full system upgrade (dnf, flake, flatpak, firmware)
+- **undeploy**: `undeploy.sh` — remove all Dotter-managed symlinks
 - **install**: `./scripts/install.sh` — fresh machine setup
 
 ## Architecture
