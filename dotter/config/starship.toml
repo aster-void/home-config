@@ -42,9 +42,8 @@ $scala\
 $docker_context\
 [](fg:#5e81ac bg:#6272a4)\
 $time\
-[ ](fg:#6272a4)\
-$directory\
-\n
+[ ](fg:#6272a4)
+$directory
 $cmd_duration\
 $character\
 """
@@ -78,8 +77,11 @@ Ubuntu = " "
 Unknown = " "
 
 [directory]
-style = "fg:#6272a4"         # "bg:#3b4252"
+style = "fg:#6272a4"                                                                                             # "bg:#3b4252"
 format = "[ $path ]($style)"
+repo_root_format = "[ $before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path ]($style)"
+before_repo_root_style = "fg:#4c566a"
+repo_root_style = "bold fg:#6272a4"
 truncation_length = 0
 truncation_symbol = "…/"
 truncate_to_repo = false
