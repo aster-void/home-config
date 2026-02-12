@@ -1,26 +1,9 @@
 {
-  config,
-  pkgs,
   lib,
   inputs,
   ...
 }:
-let
-  collectFiles =
-    dir:
-    map (name: dir + "/${name}") (
-      builtins.filter (name: builtins.match ".*\\.nix" name != null) (
-        builtins.attrNames (builtins.readDir dir)
-      )
-    );
-in
 {
-  imports = [
-    ./packages.nix
-    ./scripts.nix
-  ]
-  ++ collectFiles ./services;
-
   home.username = "aster";
   home.homeDirectory = "/home/aster";
 
@@ -52,6 +35,4 @@ in
   systemd.user.sessionVariables = {
     NIX_PATH = lib.mkForce "nixpkgs=${inputs.nixpkgs}";
   };
-
-  programs.ghostty.enable = true;
 }

@@ -13,24 +13,43 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    nix-hazkey,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    homeConfigurations."aster" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      nix-hazkey,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      homeConfigurations."aster" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-      modules = [
-        nix-hazkey.homeModules.hazkey
-        ./home.nix
-      ];
+        modules = [
+          nix-hazkey.homeModules.hazkey
+          ./home.nix
+          ./modules/packages.nix
+          ./modules/packages-desktop.nix
+          ./modules/syncthing.nix
+          ./modules/i18n.nix
+          ./modules/ghostty.nix
+        ];
 
-      extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = { inherit inputs; };
+      };
+
+      homeConfigurations."aster@bluebell" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [
+          ./home.nix
+          ./modules/packages.nix
+        ];
+
+        extraSpecialArgs = { inherit inputs; };
+      };
     };
-  };
 }

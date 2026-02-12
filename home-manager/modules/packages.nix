@@ -28,9 +28,7 @@
     # Documents
     pandoc
 
-    # Desktop
-    blueberry
-    wl-clipboard
+    # System info
     fastfetch
 
     # Programs (managed via dotter configs)

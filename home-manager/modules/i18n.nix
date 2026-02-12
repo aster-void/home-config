@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   services.hazkey.enable = true;
 
   i18n.inputMethod = {
@@ -15,5 +16,5 @@
     fcitx5.waylandFrontend = true;
   };
 
-  systemd.user.services.fcitx5-daemon.Install.WantedBy = lib.mkForce [];
+  systemd.user.services.fcitx5-daemon.Install.WantedBy = lib.mkForce [ ];
 }
