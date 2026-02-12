@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     # Core utils
     ripgrep
@@ -7,6 +8,7 @@
     dotter
 
     # Development
+    gh
     ghq
     lefthook
     mcp-nixos
