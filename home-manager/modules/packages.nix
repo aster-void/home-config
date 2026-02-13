@@ -6,6 +6,7 @@
     bat
     lsof
     dotter
+    tree
 
     # Development
     devenv
