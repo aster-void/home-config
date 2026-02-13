@@ -36,7 +36,7 @@
 
 ## Working with this flake
 
-- Working directory is already this repo - no need for `git -C`
+- Use `git status`, not `git -C /home/aster/workspace/github.com/aster-void/home-config status`
 - New `.nix` files must be `git add`ed before `home-manager switch` - flakes only see git-tracked files
 - Each host profile in `flake.nix` explicitly imports its modules — add/remove modules there per host
 
