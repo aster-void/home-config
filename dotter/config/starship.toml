@@ -53,7 +53,7 @@ $character\
 disabled = false
 
 [hostname]
-ssh_only = false
+ssh_only = true
 style = "bg:#3b4252"
 format = '[ $hostname ]($style)'
 disabled = false
