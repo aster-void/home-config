@@ -8,6 +8,7 @@
     dotter
 
     # Development
+    devenv
     gh
     ghq
     lefthook
