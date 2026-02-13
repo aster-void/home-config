@@ -7,22 +7,39 @@ end
 set -g fish_greeting
 
 # Aliases
-alias ll="ls -l"
-alias la="ls -la"
-alias l="ls -CF"
-alias ..="cd .."
-alias ...="cd ../.."
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias .....="cd ../../../../"
+
+alias h="hx"
+alias h.="hx ."
+
 alias g="git"
-alias gs="git status"
-alias gsv="git diff --cached"
-alias gd="git diff"
-alias gc="git commit"
+alias gf="git fetch --prune"
+alias gs="git status -s"
 alias gp="git push"
 alias gl="git pull"
+alias gsv="git diff --cached"
+alias gd="git diff"
 alias lg="lazygit"
-alias h="hx"
-alias claude="claude --dangerously-skip-permissions"
+
+alias claer="clear"
+alias cl="clear"
+
+alias sl="ls"
+alias ls="ez"
+alias ez="eza --icons --group-directories-first"
+alias l="ls"
+
+alias flake="nix flake"
 alias home="home-manager"
+alias nixgc="nix-collect-garbage"
+alias yz="yazi"
+alias zel="zellij"
+alias sd="shutdown"
+
+alias claude="claude --dangerously-skip-permissions"
 
 # Tool integrations
 fzf --fish | source

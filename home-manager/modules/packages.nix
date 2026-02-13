@@ -30,6 +30,11 @@
 
     # System info
     fastfetch
+    nitch
+
+    # File management & listing
+    eza
+    yazi
 
     # Programs (managed via dotter configs)
     fish
