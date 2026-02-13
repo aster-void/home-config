@@ -8,6 +8,7 @@ depends = []
 "lefthook.yml" = ""
 home-manager = ""
 "scripts" = "~/.local/bin"
+"dotter/claude" = "~/.claude"
 "dotter/ssh" = "~/.ssh"
 "dotter/config" = "~/.config"
 "dotter/local" = "~/.local"
