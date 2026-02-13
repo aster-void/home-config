@@ -127,6 +127,7 @@ style = "bg:#434c5e"
 format = '[$all_status$ahead_behind ]($style)'
 ahead = "^"
 behind = "v"
+diverged = "⇕"
 conflicted = "<=>"
 deleted = "d"
 modified = "*"
