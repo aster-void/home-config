@@ -6,6 +6,11 @@ end
 # Disable greeting
 set -g fish_greeting
 
+# Disable DNF package search on unknown commands
+function fish_command_not_found
+    echo "fish: Unknown command: $argv[1]" >&2
+end
+
 # Aliases
 alias ..="cd ../"
 alias ...="cd ../../"
