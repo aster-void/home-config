@@ -18,7 +18,10 @@
 │   ├── global.toml      # File mappings (committed)
 │   ├── local.toml       # Machine-specific package selection (gitignored)
 │   └── config/          # Config files deployed to ~/.config
-└── scripts/             # Shell scripts (install.sh, switch.sh, undeploy.sh, upgrade.sh)
+├── etc/                 # System-level config files (deployed manually to /etc/)
+│   └── ssh/
+│       └── sshd_config  # Hardened SSH daemon config
+└── scripts/             # Shell scripts (install.sh, switch.sh, undeploy.sh, upgrade.sh, install_etc.sh)
 ```
 
 ## Commands
@@ -46,4 +49,5 @@
 - **Desktop-only packages** → add to `home-manager/modules/packages-desktop.nix`
 - **New module** → create in `home-manager/modules/`, then import it in the relevant hosts in `flake.nix`
 - **Config files** → add to `dotter/config/` (deployed to `~/.config/` via Dotter)
+- **System config** → add to `etc/` (deployed manually via `./scripts/install_etc.sh`, requires sudo)
 - Don't assume packages exist in nixpkgs - search first, especially for proprietary/Linux-unsupported software that may require community flakes
