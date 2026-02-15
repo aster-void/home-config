@@ -24,14 +24,12 @@ echo "=== /etc deployment complete ==="
 echo ""
 echo "=== Installing Cloudflare WARP ==="
 
-if ! command -v warp-cli &>/dev/null; then
-  sudo rpm --import https://pkg.cloudflareclient.com/pubkey.gpg
-  curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
-  sudo dnf install -y cloudflare-warp
+sudo dnf install -y cloudflare-warp
 
+if ! warp-cli registration show &>/dev/null; then
   warp-cli registration new
   warp-cli connect
-  echo "WARP installed and connected."
+  echo "WARP registered and connected."
 else
-  echo "WARP already installed, skipping."
+  echo "WARP already registered, skipping."
 fi
