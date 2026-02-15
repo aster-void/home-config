@@ -35,6 +35,7 @@
     # === Development ===
 
     ## Environment Loader
+    cachix
     direnv
     devenv
     nix-direnv
