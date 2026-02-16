@@ -30,6 +30,7 @@
 
   home.sessionVariables = {
     NIX_PATH = "nixpkgs=${inputs.nixpkgs}";
+    EDITOR = "hx";
   };
 
   systemd.user.sessionVariables = {
