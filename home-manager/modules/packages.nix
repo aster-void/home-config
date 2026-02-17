@@ -12,10 +12,15 @@
     ## Core utils
     ripgrep
     bat
+    fd
     lsof
     dotter
     tree
     eza
+    procs
+    tokei
+    difftastic
+    xh
 
     ## System info
     btop
