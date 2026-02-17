@@ -5,5 +5,10 @@ echo "=== Updating DNF ==="
 sudo dnf upgrade --refresh -y
 
 echo ""
-echo "=== Updating GPU Drivers ==="
-sudo non-nixos-gpu-setup
+echo "=== Installing GPU Drivers ==="
+sudo "$(which non-nixos-gpu-setup)"
+
+echo ""
+echo "=== Updating Firmware ==="
+sudo fwupdmgr refresh --force
+sudo fwupdmgr update -y
