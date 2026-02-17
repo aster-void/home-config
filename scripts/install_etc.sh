@@ -52,3 +52,10 @@ if ! warp-cli registration show &>/dev/null; then
 else
   echo "WARP already registered, skipping."
 fi
+
+HOOK="per-host/$(hostname)/install_etc.sh"
+if [[ -f "$HOOK" ]]; then
+  echo ""
+  echo "=== Running host-specific install_etc ==="
+  bash "$HOOK"
+fi
