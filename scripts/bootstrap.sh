@@ -16,6 +16,17 @@ export PATH="$HOME/.nix-profile/bin:$PATH"
 echo ""
 bash scripts/switch.sh
 
+if command -v non-nixos-gpu-setup &>/dev/null; then
+  echo ""
+  echo "=== Installing GPU Drivers ==="
+  sudo "$(command -v non-nixos-gpu-setup)"
+  unit=/etc/systemd/system/non-nixos-gpu.service
+  if [ -L "$unit" ]; then
+    sudo cp --remove-destination "$(readlink -f "$unit")" "$unit"
+    sudo systemctl daemon-reload
+  fi
+fi
+
 echo ""
 echo "=== Installation complete ==="
 echo "Open a new shell to apply changes."
