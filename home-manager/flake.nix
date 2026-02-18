@@ -26,33 +26,45 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      desktopModules = [
+        nix-hazkey.homeModules.hazkey
+        ./home.nix
+        ./modules/packages.nix
+        ./modules/packages-desktop.nix
+        ./modules/syncthing.nix
+        ./modules/i18n.nix
+        ./modules/ghostty.nix
+        ./modules/fonts.nix
+        { targets.genericLinux.enable = true; }
+      ];
+      serverModules = [
+        ./home.nix
+        ./modules/packages.nix
+      ];
     in
     {
-      homeConfigurations."aster" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."aster@daisy" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        modules = desktopModules;
+        extraSpecialArgs = { inherit inputs; };
+      };
 
-        modules = [
-          nix-hazkey.homeModules.hazkey
-          ./home.nix
-          ./modules/packages.nix
-          ./modules/packages-desktop.nix
-          ./modules/syncthing.nix
-          ./modules/i18n.nix
-          ./modules/ghostty.nix
-          ./modules/fonts.nix
-        ];
-
+      homeConfigurations."aster@azalea" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = desktopModules;
         extraSpecialArgs = { inherit inputs; };
       };
 
       homeConfigurations."aster@bluebell" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        modules = serverModules;
+        extraSpecialArgs = { inherit inputs; };
+      };
 
-        modules = [
-          ./home.nix
-          ./modules/packages.nix
-        ];
-
+      # Fallback for new/unknown hosts (desktop)
+      homeConfigurations."aster" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = desktopModules;
         extraSpecialArgs = { inherit inputs; };
       };
     };
