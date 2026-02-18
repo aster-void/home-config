@@ -1,3 +1,6 @@
+# PATH
+fish_add_path -g ~/.local/bin
+
 # Session variables
 set -gx EDITOR hx
 set -gx NIX_PATH nixpkgs=flake:nixpkgs
