@@ -99,11 +99,15 @@ fi
 if command -v non-nixos-gpu-setup &>/dev/null; then
   echo ""
   echo "=== Setting up non-NixOS GPU compatibility ==="
-  sudo "$(command -v non-nixos-gpu-setup)"
-  unit=/etc/systemd/system/non-nixos-gpu.service
-  if [ -L "$unit" ]; then
-    sudo cp --remove-destination "$(readlink -f "$unit")" "$unit"
-    sudo systemctl daemon-reload
+  # May fail due to SELinux blocking Nix store binaries
+  if sudo "$(command -v non-nixos-gpu-setup)"; then
+    unit=/etc/systemd/system/non-nixos-gpu.service
+    if [ -L "$unit" ]; then
+      sudo cp --remove-destination "$(readlink -f "$unit")" "$unit"
+      sudo systemctl daemon-reload
+    fi
+  else
+    echo "Warning: non-nixos-gpu-setup failed (SELinux?). Run manually after reboot."
   fi
 fi
 
