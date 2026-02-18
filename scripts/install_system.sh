@@ -9,6 +9,12 @@ while true; do sudo -v; sleep 60; done &
 SUDO_KEEPALIVE_PID=$!
 trap 'kill $SUDO_KEEPALIVE_PID 2>/dev/null' EXIT
 
+# --- DNF repos ---
+echo "=== Enabling COPR repositories ==="
+if ! dnf repolist | grep -q "alternateved.*keyd"; then
+  sudo dnf copr enable -y alternateved/keyd
+fi
+
 # --- DNF packages ---
 echo "=== Installing DNF packages ==="
 sudo dnf install -y fish fuse-libs keyd
