@@ -25,9 +25,10 @@ fi
 
 cd "$DEST"
 
-read -rp "Is this a desktop setup? (y/N): " answer
+read -rp "Is this a desktop setup? (y/N): " answer </dev/tty
+
+bash scripts/install.sh
+
 if [[ "$answer" =~ ^[Yy]$ ]]; then
   bash scripts/install_system.sh
 fi
-
-bash scripts/install.sh
