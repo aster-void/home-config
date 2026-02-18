@@ -11,7 +11,7 @@ trap 'kill $SUDO_KEEPALIVE_PID 2>/dev/null' EXIT
 
 # --- DNF packages ---
 echo "=== Installing DNF packages ==="
-sudo dnf install -y fish fuse-libs
+sudo dnf install -y fish fuse-libs keyd
 
 # --- Shell setup ---
 echo ""
@@ -48,7 +48,7 @@ sudo chmod 600 /etc/ssh/sshd_config
 echo "$current_files" | sudo tee "$MANIFEST" > /dev/null
 
 echo "Enabling services..."
-sudo systemctl enable --now sshd avahi-daemon
+sudo systemctl enable --now sshd avahi-daemon keyd
 
 echo "Restarting sshd..."
 sudo sshd -t && sudo systemctl restart sshd
