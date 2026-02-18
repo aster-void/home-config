@@ -65,19 +65,6 @@ fi
 sudo dnf install -y tailscale
 sudo systemctl enable --now tailscaled
 
-# --- Cloudflare WARP ---
-echo ""
-echo "=== Installing Cloudflare WARP ==="
-sudo dnf install -y cloudflare-warp
-
-if ! warp-cli registration show &>/dev/null; then
-  warp-cli --accept-tos registration new
-  warp-cli --accept-tos connect
-  echo "WARP registered and connected."
-else
-  echo "WARP already registered, skipping."
-fi
-
 # --- Claude Desktop ---
 if ! flatpak run it.mijorus.gearlever --list-installed 2>/dev/null | grep -qi claude; then
   echo ""
@@ -106,6 +93,19 @@ if command -v non-nixos-gpu-setup &>/dev/null; then
     sudo cp --remove-destination "$(readlink -f "$unit")" "$unit"
     sudo systemctl daemon-reload
   fi
+fi
+
+# --- Cloudflare WARP ---
+echo ""
+echo "=== Installing Cloudflare WARP ==="
+sudo dnf install -y cloudflare-warp
+
+if ! warp-cli registration show &>/dev/null; then
+  warp-cli --accept-tos registration new
+  warp-cli --accept-tos connect
+  echo "WARP registered and connected."
+else
+  echo "WARP already registered, skipping."
 fi
 
 echo ""
