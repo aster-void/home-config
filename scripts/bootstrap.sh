@@ -22,6 +22,19 @@ export PATH="$HOME/.nix-profile/bin:$PATH"
 echo ""
 bash scripts/switch.sh
 
+if ! command -v /usr/bin/fish &>/dev/null; then
+  echo "=== Installing fish ==="
+  sudo dnf install -y fish
+fi
+FISH_PATH=/usr/bin/fish
+if ! grep -qx "$FISH_PATH" /etc/shells; then
+  echo "$FISH_PATH" | sudo tee -a /etc/shells >/dev/null
+fi
+if [ "$SHELL" != "$FISH_PATH" ]; then
+  echo "=== Setting default shell to fish ==="
+  chsh -s "$FISH_PATH"
+fi
+
 if command -v non-nixos-gpu-setup &>/dev/null; then
   echo ""
   echo "=== Installing GPU Drivers ==="

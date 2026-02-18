@@ -4,7 +4,6 @@
     # === System ===
 
     ## Shell & Terminal Multiplexer
-    fish
     starship
     tmux
     zellij
