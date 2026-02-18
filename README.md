@@ -5,10 +5,10 @@ My home directory configuration, managed by [Home Manager](https://github.com/ni
 ## Setup
 
 ```sh
-# Install Nix first: https://nixos.org/download
-./scripts/install.sh
-./scripts/install_system.sh  # Fedora only, requires sudo
+curl -fsSL https://raw.githubusercontent.com/aster-void/home-config/master/bootstrap.sh | bash
 ```
+
+This will install [Determinate Nix](https://github.com/DeterminateSystems/nix-installer), clone the repo, and run the install scripts. It will ask whether this is a desktop setup (runs `install_system.sh` for Fedora-specific setup) or server-only.
 
 ## Scripts
 
