@@ -10,7 +10,7 @@ dotter -g dotter/global.toml -l dotter/local.toml --cache-file dotter/.cache.tom
 if command -v non-nixos-gpu-setup &>/dev/null; then
   echo ""
   echo "=== Installing GPU Drivers ==="
-  sudo non-nixos-gpu-setup
+  sudo "$(command -v non-nixos-gpu-setup)"
   unit=/etc/systemd/system/non-nixos-gpu.service
   if [ -L "$unit" ]; then
     sudo cp --remove-destination "$(readlink -f "$unit")" "$unit"
