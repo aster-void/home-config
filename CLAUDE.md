@@ -21,15 +21,26 @@
 ├── etc/                 # System-level config files (deployed manually to /etc/)
 │   └── ssh/
 │       └── sshd_config  # Hardened SSH daemon config
-└── scripts/             # Shell scripts (install.sh, switch.sh, undeploy.sh, upgrade.sh, install_etc.sh)
+├── per-host/            # Per-host and shared hooks
+│   ├── shared/          # Shared scripts (fedora-upgrade.sh)
+│   └── <hostname>/      # Per-host hooks (upgrade.sh)
+└── scripts/             # Shell scripts (bootstrap.sh, switch.sh, undeploy.sh, upgrade.sh, install_etc.sh)
 ```
 
 ## Commands
 
+- **bootstrap**: `bootstrap.sh` — fresh machine setup (installs home-manager, then calls switch.sh)
 - **switch**: `switch.sh` — apply nix and config changes
 - **upgrade**: `upgrade.sh` — full system upgrade (dnf, flake, flatpak, firmware)
 - **undeploy**: `undeploy.sh` — remove all Dotter-managed symlinks
-- **install**: `./scripts/install.sh` — fresh machine setup
+
+## Call tree
+
+```
+bootstrap.sh ─→ switch.sh
+upgrade.sh   ─→ per-host/<hostname>/upgrade.sh ─→ per-host/shared/*.sh
+             ─→ switch.sh
+```
 
 ## Architecture
 
