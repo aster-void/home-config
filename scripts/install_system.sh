@@ -21,7 +21,7 @@ if ! grep -qx "$FISH_PATH" /etc/shells; then
   echo "$FISH_PATH" | sudo tee -a /etc/shells >/dev/null
 fi
 if [ "$SHELL" != "$FISH_PATH" ]; then
-  chsh -s "$FISH_PATH"
+  sudo chsh -s "$FISH_PATH" "$USER"
 fi
 
 # --- /etc file deployment ---
@@ -62,8 +62,8 @@ echo "=== Installing Cloudflare WARP ==="
 sudo dnf install -y cloudflare-warp
 
 if ! warp-cli registration show &>/dev/null; then
-  warp-cli registration new
-  warp-cli connect
+  warp-cli --accept-tos registration new
+  warp-cli --accept-tos connect
   echo "WARP registered and connected."
 else
   echo "WARP already registered, skipping."

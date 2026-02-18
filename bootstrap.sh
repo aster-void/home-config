@@ -11,7 +11,7 @@ fi
 
 if ! command -v nix &>/dev/null; then
   echo "Installing Determinate Nix..."
-  curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+  curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
   . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi
 
@@ -32,3 +32,8 @@ bash scripts/install.sh
 if [[ "$answer" =~ ^[Yy]$ ]]; then
   bash scripts/install_system.sh
 fi
+
+echo ""
+echo "=== TODO ==="
+echo "- Change hostname: sudo hostnamectl set-hostname <name>"
+echo "- Install Tailscale: https://tailscale.com/download/linux"
