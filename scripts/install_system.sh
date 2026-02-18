@@ -89,7 +89,7 @@ if ! flatpak run it.mijorus.gearlever --list-installed 2>/dev/null | grep -qi cl
     TMPFILE=$(mktemp --suffix=.AppImage)
     curl -fL "$APPIMAGE_URL" -o "$TMPFILE"
     chmod +x "$TMPFILE"
-    flatpak run it.mijorus.gearlever --integrate "$TMPFILE"
+    yes | flatpak run it.mijorus.gearlever --integrate "$TMPFILE"
     rm -f "$TMPFILE"
     echo "Claude Desktop integrated via GearLever."
   fi
