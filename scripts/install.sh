@@ -5,7 +5,9 @@ cd "$(dirname "$(readlink -f "$0")")/.."
 
 git add -A -N
 nix run home-manager/master -- switch --flake ./home-manager
+set +u
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" 2>/dev/null || true
+set -u
 export PATH="$HOME/.nix-profile/bin:$PATH"
 dotter -g dotter/global.toml -l dotter/local.toml --cache-file dotter/.cache.toml deploy -f -y
 
