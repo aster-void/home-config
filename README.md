@@ -22,5 +22,4 @@ My home directory configuration, managed by [Home Manager](https://github.com/ni
 - **`home-manager/`** — packages, session variables, services (Nix flake)
 - **`dotter/`** — program configs deployed to `~/.config/`
 - **`etc/`** — system-level config files
-- **`per-host/`** — per-host hooks for switch and upgrade
 - **`scripts/`** — all scripts listed above
