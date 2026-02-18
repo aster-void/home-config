@@ -39,8 +39,8 @@ upgrade.sh ─→ install.sh
 
 ## Architecture
 
-- **Home Manager** handles package installation, session variables, and services
-- **Dotter** handles config file deployment (symlinks from `dotter/config/` to `~/.config/`)
+- **Home Manager** handles installing things only: native packages, flatpak apps, fonts, services. Do NOT use it for text configuration (e.g. `xdg.mimeApps`, program settings)
+- **Dotter** handles all text/config file deployment (symlinks from `dotter/config/` to `~/.config/`)
 - Program configs live in `dotter/config/` — adding/editing files there and running `install.sh` is all that's needed
 
 ## Working with this flake
