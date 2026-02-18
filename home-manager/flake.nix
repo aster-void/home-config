@@ -39,6 +39,7 @@
           ./modules/syncthing.nix
           ./modules/i18n.nix
           ./modules/ghostty.nix
+          ./modules/fonts.nix
         ];
 
         extraSpecialArgs = { inherit inputs; };
