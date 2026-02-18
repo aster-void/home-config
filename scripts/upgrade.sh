@@ -30,7 +30,7 @@ fi
 
 echo "=== Updating Home Manager Flake ==="
 nix flake update --flake ./home-manager
-switch.sh
+bash scripts/install.sh
 
 if [[ "$WARP_WAS_CONNECTED" == "1" ]]; then
   echo ""

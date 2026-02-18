@@ -6,16 +6,16 @@ My home directory configuration, managed by [Home Manager](https://github.com/ni
 
 ```sh
 # Install Nix first: https://nixos.org/download
-./scripts/bootstrap.sh
+./scripts/install.sh
+./scripts/install_system.sh  # Fedora only, requires sudo
 ```
 
 ## Scripts
 
-- **`bootstrap.sh`** — First-time setup. Checks prerequisites (`git`, `nix`, `flatpak`), runs `switch.sh`, installs fish as default shell, and sets up GPU drivers.
-- **`switch.sh`** — Apply config changes (Home Manager, Dotter, Claude Desktop). Day-to-day command.
-- **`upgrade.sh`** — Full system upgrade (dnf, flake, flatpak, GPU drivers).
+- **`install.sh`** — Apply config changes (Home Manager + Dotter). No sudo required.
+- **`install_system.sh`** — Desktop setup: dnf packages, `/etc/` deployment, shell, GPU drivers, WARP, Claude Desktop. Fedora only, requires sudo.
+- **`upgrade.sh`** — Full system upgrade (dnf, flake, flatpak, firmware).
 - **`undeploy.sh`** — Remove all Dotter-managed symlinks.
-- **`install_etc.sh`** — Deploy `etc/` to `/etc/` (requires sudo).
 
 ## Structure
 

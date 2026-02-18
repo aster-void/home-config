@@ -21,28 +21,27 @@
 ├── etc/                 # System-level config files (deployed manually to /etc/)
 │   └── ssh/
 │       └── sshd_config  # Hardened SSH daemon config
-└── scripts/             # Shell scripts (bootstrap.sh, switch.sh, undeploy.sh, upgrade.sh, install_etc.sh)
+└── scripts/             # Shell scripts (install.sh, install_system.sh, upgrade.sh, undeploy.sh)
 ```
 
 ## Commands
 
-- **bootstrap**: `bootstrap.sh` — fresh machine setup (installs home-manager, then calls switch.sh)
-- **switch**: `switch.sh` — apply nix and config changes
+- **install**: `install.sh` — apply nix and config changes (no sudo, idempotent)
+- **install_system**: `install_system.sh` — desktop setup: dnf packages, /etc, shell, GPU, WARP, Claude Desktop (sudo, Fedora-specific)
 - **upgrade**: `upgrade.sh` — full system upgrade (dnf, flake, flatpak, firmware)
 - **undeploy**: `undeploy.sh` — remove all Dotter-managed symlinks
 
 ## Call tree
 
 ```
-bootstrap.sh ─→ switch.sh
-upgrade.sh   ─→ switch.sh
+upgrade.sh ─→ install.sh
 ```
 
 ## Architecture
 
 - **Home Manager** handles package installation, session variables, and services
 - **Dotter** handles config file deployment (symlinks from `dotter/config/` to `~/.config/`)
-- Program configs live in `dotter/config/` — adding/editing files there and running `switch.sh` is all that's needed
+- Program configs live in `dotter/config/` — adding/editing files there and running `install.sh` is all that's needed
 
 ## Working with this flake
 
@@ -56,5 +55,5 @@ upgrade.sh   ─→ switch.sh
 - **Desktop-only packages** → add to `home-manager/modules/packages-desktop.nix`
 - **New module** → create in `home-manager/modules/`, then import it in the relevant hosts in `flake.nix`
 - **Config files** → add to `dotter/config/` (deployed to `~/.config/` via Dotter)
-- **System config** → add to `etc/` (deployed manually via `./scripts/install_etc.sh`, requires sudo)
+- **System config** → add to `etc/` (deployed via `./scripts/install_system.sh`, requires sudo)
 - Don't assume packages exist in nixpkgs - search first, especially for proprietary/Linux-unsupported software that may require community flakes
