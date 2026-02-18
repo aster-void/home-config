@@ -46,22 +46,17 @@ sudo sysctl --system > /dev/null
 
 echo "=== /etc deployment complete ==="
 
-echo ""
-echo "=== Installing Cloudflare WARP ==="
-
-sudo dnf install -y cloudflare-warp
-
-if ! warp-cli registration show &>/dev/null; then
-  warp-cli registration new
-  warp-cli connect
-  echo "WARP registered and connected."
-else
-  echo "WARP already registered, skipping."
-fi
-
-HOOK="per-host/$(hostname)/install_etc.sh"
-if [[ -f "$HOOK" ]]; then
+if command -v dnf &>/dev/null; then
   echo ""
-  echo "=== Running host-specific install_etc ==="
-  bash "$HOOK"
+  echo "=== Installing Cloudflare WARP ==="
+
+  sudo dnf install -y cloudflare-warp
+
+  if ! warp-cli registration show &>/dev/null; then
+    warp-cli registration new
+    warp-cli connect
+    echo "WARP registered and connected."
+  else
+    echo "WARP already registered, skipping."
+  fi
 fi

@@ -21,9 +21,6 @@
 ├── etc/                 # System-level config files (deployed manually to /etc/)
 │   └── ssh/
 │       └── sshd_config  # Hardened SSH daemon config
-├── per-host/            # Per-host and shared hooks
-│   ├── _fedora/         # Shared Fedora scripts (upgrade.sh)
-│   └── <hostname>/      # Per-host hooks (upgrade.sh)
 └── scripts/             # Shell scripts (bootstrap.sh, switch.sh, undeploy.sh, upgrade.sh, install_etc.sh)
 ```
 
@@ -38,8 +35,7 @@
 
 ```
 bootstrap.sh ─→ switch.sh
-upgrade.sh   ─→ per-host/<hostname>/upgrade.sh ─→ per-host/_fedora/upgrade.sh
-             ─→ switch.sh
+upgrade.sh   ─→ switch.sh
 ```
 
 ## Architecture

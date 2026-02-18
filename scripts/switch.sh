@@ -22,10 +22,3 @@ if ! flatpak run it.mijorus.gearlever --list-installed 2>/dev/null | grep -qi cl
     echo "Claude Desktop integrated via GearLever."
   fi
 fi
-
-HOOK="per-host/$(hostname)/switch.sh"
-if [[ -f "$HOOK" ]]; then
-  echo ""
-  echo "=== Running host-specific switch ==="
-  bash "$HOOK"
-fi
