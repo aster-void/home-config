@@ -9,35 +9,18 @@ while true; do sudo -v; sleep 60; done &
 SUDO_KEEPALIVE_PID=$!
 trap 'kill $SUDO_KEEPALIVE_PID 2>/dev/null' EXIT
 
-if ! command -v nix &>/dev/null; then
-  echo "Error: nix is not installed. Install it first: https://nixos.org/download/"
+missing=()
+for cmd in git nix flatpak; do
+  command -v "$cmd" &>/dev/null || missing+=("$cmd")
+done
+if [ ${#missing[@]} -gt 0 ]; then
+  echo "Error: missing required commands: ${missing[*]}"
   exit 1
 fi
 
-echo "=== Installing Home Manager ==="
-nix run home-manager/master -- switch --flake ./home-manager
-
 export PATH="$HOME/.nix-profile/bin:$PATH"
 
-echo ""
 bash scripts/switch.sh
-
-if ! flatpak run it.mijorus.gearlever --list-installed 2>/dev/null | grep -qi claude; then
-  echo ""
-  echo "=== Installing Claude Desktop (AppImage via GearLever) ==="
-  APPIMAGE_URL=$(gh api repos/aaddrick/claude-desktop-debian/releases/latest \
-    --jq '.assets[] | select(.name | test("amd64\\.AppImage$")) | .browser_download_url')
-  if [ -z "$APPIMAGE_URL" ]; then
-    echo "Warning: Could not find Claude Desktop AppImage release. Skipping."
-  else
-    TMPFILE=$(mktemp --suffix=.AppImage)
-    curl -fL "$APPIMAGE_URL" -o "$TMPFILE"
-    chmod +x "$TMPFILE"
-    flatpak run it.mijorus.gearlever --integrate "$TMPFILE"
-    rm -f "$TMPFILE"
-    echo "Claude Desktop integrated via GearLever."
-  fi
-fi
 
 if ! command -v /usr/bin/fish &>/dev/null; then
   echo "=== Installing fish ==="

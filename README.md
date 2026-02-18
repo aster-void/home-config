@@ -6,30 +6,21 @@ My home directory configuration, managed by [Home Manager](https://github.com/ni
 
 ```sh
 # Install Nix first: https://nixos.org/download
-./scripts/install.sh
+./scripts/bootstrap.sh
 ```
 
-## Usage
+## Scripts
 
-```sh
-switch.sh     # Apply config changes
-undeploy.sh   # Remove all Dotter-managed symlinks
-upgrade.sh    # Full system upgrade (dnf, flake, flatpak, firmware)
-```
-
-## System Config (`/etc`)
-
-System-level config files live in `etc/` and must be deployed manually:
-
-```sh
-./scripts/install_etc.sh
-```
-
-This copies files to `/etc/` with correct ownership and permissions (requires sudo).
+- **`bootstrap.sh`** — First-time setup. Checks prerequisites (`git`, `nix`, `flatpak`), runs `switch.sh`, installs fish as default shell, and sets up GPU drivers.
+- **`switch.sh`** — Apply config changes (Home Manager, Dotter, Claude Desktop). Day-to-day command.
+- **`upgrade.sh`** — Full system upgrade (dnf, flake, flatpak, GPU drivers).
+- **`undeploy.sh`** — Remove all Dotter-managed symlinks.
+- **`install_etc.sh`** — Deploy `etc/` to `/etc/` (requires sudo).
 
 ## Structure
 
 - **`home-manager/`** — packages, session variables, services (Nix flake)
-- **`dotter/`** — program configs (profiles) deployed to `~/.config/`
-- **`etc/`** — system-level config files (deployed manually via `install_etc.sh`)
-- **`scripts/`** — `install.sh`, `switch.sh`, `undeploy.sh`, `upgrade.sh`, `install_etc.sh`
+- **`dotter/`** — program configs deployed to `~/.config/`
+- **`etc/`** — system-level config files
+- **`per-host/`** — per-host hooks for switch and upgrade
+- **`scripts/`** — all scripts listed above
