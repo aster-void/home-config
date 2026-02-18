@@ -19,5 +19,6 @@
     "com.valvesoftware.Steam"
     "it.mijorus.gearlever"
     "md.obsidian.Obsidian"
+    "org.gnome.eog"
   ];
 }
