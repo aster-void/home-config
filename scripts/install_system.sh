@@ -56,6 +56,15 @@ sudo sshd -t && sudo systemctl restart sshd
 echo "Reloading sysctl..."
 sudo sysctl --system > /dev/null
 
+# --- Tailscale ---
+echo ""
+echo "=== Installing Tailscale ==="
+if ! dnf repolist | grep -q tailscale; then
+  sudo dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+fi
+sudo dnf install -y tailscale
+sudo systemctl enable --now tailscaled
+
 # --- Cloudflare WARP ---
 echo ""
 echo "=== Installing Cloudflare WARP ==="

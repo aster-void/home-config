@@ -36,4 +36,4 @@ fi
 echo ""
 echo "=== TODO ==="
 echo "- Change hostname: sudo hostnamectl set-hostname <name>"
-echo "- Install Tailscale: https://tailscale.com/download/linux"
+echo "- Log in to Tailscale: sudo tailscale up"
