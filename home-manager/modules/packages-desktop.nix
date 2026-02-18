@@ -13,6 +13,7 @@
   services.flatpak.packages = [
     "app.zen_browser.zen"
     "com.discordapp.Discord"
+    "com.github.tchx84.Flatseal"
     "com.google.ChromeDev"
     "com.usebottles.bottles"
     "com.valvesoftware.Steam"
