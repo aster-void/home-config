@@ -90,7 +90,7 @@ fi
 # --- GPU drivers ---
 if command -v non-nixos-gpu-setup &>/dev/null; then
   echo ""
-  echo "=== Installing GPU Drivers ==="
+  echo "=== Setting up non-NixOS GPU compatibility ==="
   sudo "$(command -v non-nixos-gpu-setup)"
   unit=/etc/systemd/system/non-nixos-gpu.service
   if [ -L "$unit" ]; then
