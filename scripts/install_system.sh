@@ -47,6 +47,9 @@ sudo chmod 600 /etc/ssh/sshd_config
 
 echo "$current_files" | sudo tee "$MANIFEST" > /dev/null
 
+echo "Enabling services..."
+sudo systemctl enable --now sshd avahi-daemon
+
 echo "Restarting sshd..."
 sudo sshd -t && sudo systemctl restart sshd
 
