@@ -1,7 +1,7 @@
-# Home Manager session variables
-if test -f ~/.nix-profile/etc/profile.d/hm-session-vars.fish
-    source ~/.nix-profile/etc/profile.d/hm-session-vars.fish
-end
+# Session variables
+set -gx EDITOR hx
+set -gx NIX_PATH nixpkgs=flake:nixpkgs
+set -gx TERMINFO_DIRS "$HOME/.nix-profile/share/terminfo:/etc/terminfo:/lib/terminfo:/usr/share/terminfo"
 
 # Disable greeting
 set -g fish_greeting

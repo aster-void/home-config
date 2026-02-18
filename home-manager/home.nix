@@ -1,8 +1,4 @@
-{
-  lib,
-  inputs,
-  ...
-}:
+{ ... }:
 {
   home.username = "aster";
   home.homeDirectory = "/home/aster";
@@ -27,13 +23,4 @@
   nixpkgs.config.allowUnfree = true;
 
   news.display = "silent";
-
-  home.sessionVariables = {
-    NIX_PATH = "nixpkgs=${inputs.nixpkgs}";
-    EDITOR = "hx";
-  };
-
-  systemd.user.sessionVariables = {
-    NIX_PATH = lib.mkForce "nixpkgs=${inputs.nixpkgs}";
-  };
 }
