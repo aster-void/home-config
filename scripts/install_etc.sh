@@ -3,6 +3,12 @@ set -euo pipefail
 
 cd "$(dirname "$(readlink -f "$0")")/.."
 
+# Cache sudo credentials upfront and keep them alive in the background
+sudo -v
+while true; do sudo -v; sleep 60; done &
+SUDO_KEEPALIVE_PID=$!
+trap 'kill $SUDO_KEEPALIVE_PID 2>/dev/null' EXIT
+
 # Manifest tracks deployed files as paths relative to /etc/, one per line.
 # e.g. ssh/sshd_config
 #      sysctl.d/50-inotify.conf

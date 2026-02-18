@@ -3,6 +3,12 @@ set -euo pipefail
 
 cd "$(dirname "$(readlink -f "$0")")/.."
 
+# Cache sudo credentials upfront and keep them alive in the background
+sudo -v
+while true; do sudo -v; sleep 60; done &
+SUDO_KEEPALIVE_PID=$!
+trap 'kill $SUDO_KEEPALIVE_PID 2>/dev/null' EXIT
+
 if ! command -v nix &>/dev/null; then
   echo "Error: nix is not installed. Install it first: https://nixos.org/download/"
   exit 1

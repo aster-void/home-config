@@ -3,6 +3,12 @@ set -euo pipefail
 
 cd "$(dirname "$(readlink -f "$0")")/.."
 
+# Cache sudo credentials upfront and keep them alive in the background
+sudo -v
+while true; do sudo -v; sleep 60; done &
+SUDO_KEEPALIVE_PID=$!
+trap 'kill $SUDO_KEEPALIVE_PID 2>/dev/null' EXIT
+
 HOOK="per-host/$(hostname)/upgrade.sh"
 if [[ -f "$HOOK" ]]; then
   echo "=== Running host-specific upgrade ==="
