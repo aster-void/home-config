@@ -4,6 +4,8 @@ set -euo pipefail
 REPO_URL="https://github.com/aster-void/home-config.git"
 DEST="$HOME/workspace/github.com/aster-void/home-config"
 
+sudo -v
+
 if ! command -v git &>/dev/null; then
   echo "Error: git is not installed." >&2
   exit 1

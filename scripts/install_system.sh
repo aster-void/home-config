@@ -82,8 +82,8 @@ fi
 if ! flatpak run it.mijorus.gearlever --list-installed 2>/dev/null | grep -qi claude; then
   echo ""
   echo "=== Installing Claude Desktop (AppImage via GearLever) ==="
-  APPIMAGE_URL=$(gh api repos/aaddrick/claude-desktop-debian/releases/latest \
-    --jq '.assets[] | select(.name | test("amd64\\.AppImage$")) | .browser_download_url')
+  APPIMAGE_URL=$(curl -fsSL https://api.github.com/repos/aaddrick/claude-desktop-debian/releases/latest \
+    | jq -r '.assets[] | select(.name | test("amd64\\.AppImage$")) | .browser_download_url')
   if [ -z "$APPIMAGE_URL" ]; then
     echo "Warning: Could not find Claude Desktop AppImage release. Skipping."
   else

@@ -9,6 +9,8 @@
     wl-clipboard
   ];
 
+  systemd.user.services.flatpak-managed-install.Service.TimeoutStartSec = "10m";
+
   services.flatpak.enable = true;
   services.flatpak.packages = [
     "app.zen_browser.zen"
