@@ -23,4 +23,8 @@
   nixpkgs.config.allowUnfree = true;
 
   news.display = "silent";
+
+  # Suppress upstream warning about options.json store path context
+  # https://github.com/nix-community/home-manager/issues/7935
+  manual.json.enable = false;
 }
