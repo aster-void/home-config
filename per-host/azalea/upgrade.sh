@@ -2,4 +2,4 @@
 set -euo pipefail
 
 cd "$(dirname "$(readlink -f "$0")")/.."
-bash shared/fedora-upgrade.sh
+bash _fedora/upgrade.sh
