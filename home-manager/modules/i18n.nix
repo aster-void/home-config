@@ -1,10 +1,14 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }:
 {
-  services.hazkey.enable = true;
+  services.hazkey = {
+    enable = true;
+    libllama.package = inputs.nix-hazkey.packages.${pkgs.system}.libllama-vulkan;
+  };
 
   i18n.inputMethod = {
     enable = true;
