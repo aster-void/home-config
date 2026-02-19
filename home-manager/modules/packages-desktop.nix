@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   inputs,
   ...
 }:
@@ -17,7 +16,11 @@
   systemd.user.services.flatpak-managed-install.Service.TimeoutStartSec = "10m";
 
   services.flatpak.enable = true;
-  services.flatpak.remotes = lib.mkOptionDefault [
+  services.flatpak.remotes = [
+    {
+      name = "flathub";
+      location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+    }
     {
       name = "flathub-beta";
       location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
