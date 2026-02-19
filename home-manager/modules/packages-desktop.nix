@@ -26,10 +26,15 @@
       location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
     }
   ];
-  services.flatpak.overrides.global.Context.filesystems = [
-    "xdg-config/fontconfig:ro"
-    "~/.local/share/fonts:ro"
-  ];
+  services.flatpak.overrides = {
+    global.Context.filesystems = [
+      "xdg-config/fontconfig:ro"
+      "~/.local/share/fonts:ro"
+    ];
+    "app.zen_browser.zen".Context.filesystems = [
+      "xdg-run/speech-dispatcher:ro"
+    ];
+  };
   services.flatpak.packages = [
     "app.zen_browser.zen"
     "com.discordapp.Discord"
