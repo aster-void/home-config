@@ -11,6 +11,7 @@ home-manager = ""
 "dotter/claude" = "~/.claude"
 "dotter/ssh" = "~/.ssh"
 "dotter/config" = "~/.config"
+"dotter/bashrc" = "~/.bashrc"
 "dotter/local" = "~/.local"
 
 [default.variables]
