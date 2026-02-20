@@ -36,6 +36,7 @@
         ./modules/ghostty.nix
         ./modules/fonts.nix
         { targets.genericLinux.enable = true; }
+        ./modules/gpu.nix
       ];
       serverModules = [
         ./home.nix

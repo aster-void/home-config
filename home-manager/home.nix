@@ -18,6 +18,7 @@
   programs.home-manager.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.nvidia.acceptLicense = true;
 
   news.display = "silent";
 
