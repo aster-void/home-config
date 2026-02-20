@@ -23,6 +23,11 @@ if command -v nvidia-smi &>/dev/null; then
 }
 EOF
     echo "Generated gpu.nix: version=$host_ver"
+  else
+    echo "gpu.nix is up to date
+host = $host_ver
+gpu.nix = $current_ver
+"
   fi
 fi
 
