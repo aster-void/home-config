@@ -5,7 +5,6 @@ depends = []
 
 [default.files]
 "CLAUDE.md" = ""
-"lefthook.yml" = ""
 home-manager = ""
 "scripts" = "~/.local/bin"
 "dotter/claude" = "~/.claude"

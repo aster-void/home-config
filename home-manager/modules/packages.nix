@@ -49,7 +49,6 @@
     git
     gh
     ghq
-    lefthook
     lazygit
 
     ## Editor
