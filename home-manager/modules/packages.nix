@@ -72,6 +72,10 @@
     tailwindcss-language-server
     prettier
 
+    ### F#
+    dotnet-sdk
+    fsautocomplete
+
     ### Data & Markup
     marksman
     taplo

@@ -52,5 +52,9 @@ formatter = { command = "taplo", args = ["fmt", "-"] }
 name = "bash"
 auto-format = false
 
+[[language]]
+name = "fsharp"
+auto-format = true
+
 [language-server.nil]
 command = "nil"
