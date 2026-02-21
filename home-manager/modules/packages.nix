@@ -75,6 +75,7 @@
     ### F#
     dotnet-sdk
     fsautocomplete
+    fantomas
 
     ### Data & Markup
     marksman
