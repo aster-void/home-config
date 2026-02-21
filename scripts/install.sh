@@ -38,7 +38,7 @@ nix run home-manager/master -- switch --flake ./home-manager
 if command -v non-nixos-gpu-setup &>/dev/null; then
   setup_script=$(command -v non-nixos-gpu-setup)
   new_store_path=$(grep -oP '/nix/store/\S+-non-nixos-gpu' "$setup_script" | head -1)
-  current_store_path=$(readlink -f /run/opengl-driver 2>/dev/null || echo "")
+  current_store_path=$(readlink /etc/systemd/system/non-nixos-gpu.service 2>/dev/null | grep -oP '/nix/store/\S+-non-nixos-gpu')
   if [[ "$new_store_path" != "$current_store_path" ]]; then
     echo "=== Updating GPU drivers in /run/opengl-driver ==="
     sudo "$setup_script"
